@@ -1,0 +1,18 @@
+MAIN{''
+	INT var = 10;
+	IF(var == 10 && var == 20){
+		var = 20+10;
+	}
+	IF(var > 10 || var == 20){
+		var = 20*10;
+	}
+	IF(!var < 10){
+		var = 20/10;
+	}
+	IF(var <= 10){
+		var = 20-10;
+	}
+	IF(var >= 10){
+	var = 20-10;
+	}
+}

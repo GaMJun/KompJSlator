@@ -1,13 +1,13 @@
-[![KNNJS](https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2018/08/keylines-clustering-algorithm.png)](http://bfy.tw/MoZ2)
+[![KNNJS](https://i.imgur.com/8Z64ch5.jpg)](http://bfy.tw/MoZ2)
 
-# API KNNJS
+# API KompJSlator
 
-> Esta API fornece rotas para um classificador K-Nearest Neighbors.
+> Esta API fornece rotas para um compilador da linguagem Unbending.
 
 ## Instalação
 
 ### Clone
-- Clone este repositório em sua máquina `https://github.com/GaMJun/knnjs`
+- Clone este repositório em sua máquina `https://github.com/GaMJun/KompJSlator`
 
 ### Setup
 
@@ -89,10 +89,8 @@ sudo yarn start
 > Importe o backup do postman
 
 ```shell
-Este estará localizado na pasta raiz do projeto pelo nome de AM KNN.postman_collection.json
+Este estará localizado na pasta raiz do projeto pelo nome de KompJSlator.postman_collection.json
 ```
-
-![Postman Backup](https://i.imgur.com/zSsKZNq.gif)
 
 >Algum problema não relatado
 
@@ -102,7 +100,7 @@ sudo yarn start
 ``` 
 ---
 
-<h2><a href="https://documenter.getpostman.com/view/6350371/S17oyAcg" target="_blank">Documentação</a></h2>
+<h2><a href="https://documenter.getpostman.com/view/6350371/S17tS8yr" target="_blank">Documentação</a></h2>
 
 ## Time
 

@@ -22,14 +22,14 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:3712/kompjslator/load",
+					"raw": "localhost:3712/kompjslator/lexicon",
 					"host": [
 						"localhost"
 					],
 					"port": "3712",
 					"path": [
 						"kompjslator",
-						"load"
+						"lexicon"
 					]
 				}
 			},

@@ -1,14 +1,13 @@
 {
-  "name": "knnjs",
+  "name": "kompjslator",
   "version": "1.0.0",
-  "description": "Classificador K-Nearest Neighbors",
+  "description": "Compilador da linguagem Unbending",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [
-    "knn",
-    "classifier",
+    "compiler",
     "js"
   ],
   "author": "Gilberto Antunes & Henrique Tomé",
@@ -17,16 +16,15 @@
     "body-parser": "^1.18.3",
     "consign": "^0.1.6",
     "cors": "^2.8.4",
-    "dbly-linked-list": "^0.3.1",
     "express": "^4.16.4",
-    "fast-csv": "^2.4.1",
     "form-data": "^2.3.3",
     "helmet": "^3.13.0",
     "machine": "^15.2.2",
     "machine-as-action": "^10.2.0",
     "method-override": "^3.0.0",
     "morgan": "^1.9.1",
-    "multer": "^1.4.1"
+    "multer": "^1.4.1",
+    "tokenizr": "^1.5.2"
   },
   "devDependencies": {
     "mocha": "^5.2.0",

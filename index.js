@@ -12,7 +12,7 @@ const port = process.env.PORT || 3712;
 
 const server = http.createServer(app);
 server.listen(port, () => {
-	console.log(`KNNJS is running in port: ${port}`);
+	console.log(`KompJSlator is running in port: ${port}`);
 });
 
 app.use(express.static('./public'));

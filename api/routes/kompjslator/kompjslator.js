@@ -20,22 +20,10 @@ const upload = multer({
 module.exports = async function (app) {
     const asAction = require('machine-as-action'); //machine to build the functions
 
-    app.route('/knn/load')
+    app.route('/kompjslator/lexicon')
         .post(upload.single('file'), (req, res, next) => {
             req.params.app = app;
             req.params.file_path = req.file.path;
             next();
-        }, asAction(app.controllers.knn.load));
-
-    app.route('/knn/validation')
-        .get((req, res, next) => {
-            req.params.app = app;
-            next();
-        }, asAction(app.controllers.knn.validation));
-
-    app.route('/knn/test')
-        .post((req, res, next) => {
-            req.params.app = app;
-            next();
-        }, asAction(app.controllers.knn.test));
+        }, asAction(app.controllers.kompjslator.lexicon));
 };

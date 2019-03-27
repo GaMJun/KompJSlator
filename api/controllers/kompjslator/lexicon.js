@@ -75,12 +75,14 @@ module.exports = {
             lexer.rule(/WRITE/, (ctx, match) => {
                 ctx.accept("<write>")
             });
-            lexer.rule(/TRUE/, (ctx, match) => {
-                ctx.accept("<true>")
-            });
-            lexer.rule(/FALSE/, (ctx, match) => {
-                ctx.accept("<false>")
-            });
+            // lexer.rule(/TRUE/, (ctx, match) => {
+            //     ctx.accept("<true>")
+            // });
+            // lexer.rule(/FALSE/, (ctx, match) => {
+            //     ctx.accept("<false>")
+            // });
+
+            //testar isso aqui somente o tipo boleano
 
             // Operadores
             lexer.rule(/==|>|<|>=|<=/, (ctx, match) => {

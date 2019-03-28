@@ -75,14 +75,22 @@ module.exports = {
             lexer.rule(/WRITE/, (ctx, match) => {
                 ctx.accept("<write>");
             });
-            // lexer.rule(/TRUE/, (ctx, match) => {
-            //     ctx.accept("<true>")
-            // });
-            // lexer.rule(/FALSE/, (ctx, match) => {
-            //     ctx.accept("<false>")
-            // });
 
-            //testar isso aqui somente o tipo boleano
+            // Tipos
+            lexer.rule(/[+-]?[0-9]+\.[0-9]+/, (ctx, match) => {
+                ctx.accept("<float>", parseFloat(match[0]));
+            });
+            lexer.rule(/[+-]?[0-9]+/, (ctx, match) => {
+                ctx.accept("<inteiro>", parseInt(match[0]));
+            });
+            lexer.rule(/TRUE|FALSE/, (ctx, match) => {
+                ctx.accept("<bolean>");
+            });
+
+            // Id
+            lexer.rule(/[a-zA-Z_]+[a-zA-Z0-9_]*/, (ctx, match) => {
+                ctx.accept("<nome_var>");
+            });
 
             // Operadores
             lexer.rule(/==|>|<|>=|<=/, (ctx, match) => {
@@ -93,18 +101,6 @@ module.exports = {
             });
             lexer.rule(/\+|\-|\*|\//, (ctx, match) => {
                 ctx.accept("<sign_ar>");
-            });
-
-            // Tipos
-            lexer.rule(/[0-9]+\.[0-9]+/, (ctx, match) => {
-                ctx.accept("<float>");
-            });
-            lexer.rule(/[0-9]+/, (ctx, match) => {
-                console.log(ctx)
-                ctx.accept("<inteiro>");
-            });
-            lexer.rule(/TRUE|FALSE/, (ctx, match) => {
-                ctx.accept("<bolean>");
             });
 
             // Simbolos
@@ -132,11 +128,6 @@ module.exports = {
                 ctx.accept("<recebe>");
             });
 
-            // Id
-            lexer.rule(/[a-zA-Z_]+[a-zA-Z0-9_]*/, (ctx, match) => {
-                ctx.accept("<nome_var>");
-            });
-
             // Dump
             lexer.rule(/\/\/[^\r\n]*\r?\n/, (ctx, match) => {
                 ctx.ignore();
@@ -149,7 +140,6 @@ module.exports = {
             lexer.rule(/.+?/, (ctx, match) => {
                 ctx.accept("<ERROR>");
             });
-
 
             let source_file = fs.readFileSync(inputs.file_path, "utf8");
 

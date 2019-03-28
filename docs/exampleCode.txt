@@ -6,6 +6,7 @@ MAIN{
 	BOOLEAN thisIsFBool = FALSE;
 	INT rw_Var;
  	FLOAT 1erro;
+	FLOAT @erro;
 
 	IF(var == 10 && var == 20){
 		var = 20+10;

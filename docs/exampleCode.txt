@@ -1,5 +1,12 @@
-MAIN{''
+MAIN{
+
 	INT var = 10;
+	FLOAT var2 = 15.87;
+	BOOLEAN thisIsTBool = TRUE;
+	BOOLEAN thisIsFBool = FALSE;
+	INT rw_Var;
+ 	FLOAT 1erro;
+
 	IF(var == 10 && var == 20){
 		var = 20+10;
 	}
@@ -15,4 +22,24 @@ MAIN{''
 	IF(var >= 10){
 	var = 20-10;
 	}
+
+	WHILE (thisIsBool){
+		var2 = var2 + 0.5;
+
+		IF(var2 > 18){
+			thisIsBool = FALSE;
+		}
+	}
+
+	DO{
+		var = var * 15;
+		if (var2 > 20){
+			thisIsFBool = TRUE;
+		} ELSE {
+			var2 = var2 + 0.75;
+		}
+	} WHILE (!thisIsFBool) 
+
+	READ rw_Var;
+	WRITE rw_Var;
 }

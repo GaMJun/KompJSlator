@@ -46,34 +46,34 @@ module.exports = {
 
             // Palavras Reservadas
             lexer.rule(/MAIN/, (ctx, match) => {
-                ctx.accept("<main>")
+                ctx.accept("<main>");
             });
             lexer.rule(/INT/, (ctx, match) => {
-                ctx.accept("<int>")
+                ctx.accept("<int>");
             });
             lexer.rule(/FLOAT/, (ctx, match) => {
-                ctx.accept("<float>")
+                ctx.accept("<float>");
             });
             lexer.rule(/BOOLEAN/, (ctx, match) => {
-                ctx.accept("<boolean>")
+                ctx.accept("<boolean>");
             });
             lexer.rule(/ELSE/, (ctx, match) => {
-                ctx.accept("<else>")
+                ctx.accept("<else>");
             });
             lexer.rule(/WHILE/, (ctx, match) => {
-                ctx.accept("<while>")
+                ctx.accept("<while>");
             });
             lexer.rule(/DO/, (ctx, match) => {
-                ctx.accept("<do>")
+                ctx.accept("<do>");
             });
             lexer.rule(/IF/, (ctx, match) => {
-                ctx.accept("<if>")
+                ctx.accept("<if>");
             });
             lexer.rule(/READ/, (ctx, match) => {
-                ctx.accept("<read>")
+                ctx.accept("<read>");
             });
             lexer.rule(/WRITE/, (ctx, match) => {
-                ctx.accept("<write>")
+                ctx.accept("<write>");
             });
             // lexer.rule(/TRUE/, (ctx, match) => {
             //     ctx.accept("<true>")
@@ -86,71 +86,71 @@ module.exports = {
 
             // Operadores
             lexer.rule(/==|>|<|>=|<=/, (ctx, match) => {
-                ctx.accept("<sign_rel>")
+                ctx.accept("<sign_rel>");
             });
             lexer.rule(/\|\||&&|!/, (ctx, match) => {
-                ctx.accept("<sign_lo>")
+                ctx.accept("<sign_lo>");
             });
             lexer.rule(/\+|\-|\*|\//, (ctx, match) => {
-                ctx.accept("<sign_ar>")
+                ctx.accept("<sign_ar>");
             });
 
             // Tipos
             lexer.rule(/[0-9]+/, (ctx, match) => {
-                ctx.accept("<inteiro>")
+                ctx.accept("<inteiro>");
             });
             lexer.rule(/[0-9]+\.[0-9]+/, (ctx, match) => {
-                ctx.accept("<float>")
+                ctx.accept("<float>");
             });
             lexer.rule(/TRUE|FALSE/, (ctx, match) => {
-                ctx.accept("<bolean>")
+                ctx.accept("<bolean>");
             });
 
             // Simbolos
             lexer.rule(/\(/, (ctx, match) => {
-                ctx.accept("<par_esq>")
+                ctx.accept("<par_esq>");
             });
             lexer.rule(/\)/, (ctx, match) => {
-                ctx.accept("<par_dir>")
+                ctx.accept("<par_dir>");
             });
             lexer.rule(/{/, (ctx, match) => {
-                ctx.accept("<chave_esq>")
+                ctx.accept("<chave_esq>");
             });
             lexer.rule(/}/, (ctx, match) => {
-                ctx.accept("<chave_dir>")
+                ctx.accept("<chave_dir>");
             });
             lexer.rule(/;/, (ctx, match) => {
-                ctx.accept("<semicolon>")
+                ctx.accept("<semicolon>");
             });
             lexer.rule(/,/, (ctx, match) => {
-                ctx.accept("<comma>")
+                ctx.accept("<comma>");
             });
 
             // Atribuição
             lexer.rule(/=/, (ctx, match) => {
-                ctx.accept("<recebe>")
+                ctx.accept("<recebe>");
             });
 
             // Id
             lexer.rule(/[a-zA-Z_]+[a-zA-Z0-9_]*/, (ctx, match) => {
-                ctx.accept("<nome_var>")
+                ctx.accept("<nome_var>");
             });
 
             // Dump
             lexer.rule(/\/\/[^\r\n]*\r?\n/, (ctx, match) => {
-                ctx.ignore()
+                ctx.ignore();
             });
             lexer.rule(/[ \t\r\n]+/, (ctx, match) => {
-                ctx.ignore()
+                ctx.ignore();
             });
 
             // Error
             lexer.rule(/.+?/, (ctx, match) => {
-                ctx.accept("<ERROR>")
+                ctx.accept("<ERROR>");
             });
 
 
-            let source_file = fs.readFileSync(inputs.file_path, "utf8")
+            let source_file = fs.readFileSync(inputs.file_path, "utf8");
 
             lexer.input(source_file);
             lexer.debug(false);

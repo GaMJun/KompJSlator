@@ -96,11 +96,12 @@ module.exports = {
             });
 
             // Tipos
-            lexer.rule(/[0-9]+/, (ctx, match) => {
-                ctx.accept("<inteiro>");
-            });
             lexer.rule(/[0-9]+\.[0-9]+/, (ctx, match) => {
                 ctx.accept("<float>");
+            });
+            lexer.rule(/[0-9]+/, (ctx, match) => {
+                console.log(ctx)
+                ctx.accept("<inteiro>");
             });
             lexer.rule(/TRUE|FALSE/, (ctx, match) => {
                 ctx.accept("<bolean>");

@@ -88,7 +88,7 @@ module.exports = {
             });
 
             // Id
-            lexer.rule(/[a-zA-Z_]+[a-zA-Z0-9_]*/, (ctx, match) => {
+            lexer.rule(/[a-z_]+[a-z0-9_]*/, (ctx, match) => {
                 ctx.accept("<nome_var>");
             });
 

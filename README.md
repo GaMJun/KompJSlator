@@ -95,7 +95,7 @@ sudo yarn start
 > Importe o backup do postman
 
 ```
-Este estará localizado na pasta raiz do projeto pelo nome de AM KNN.postman_collection.json
+Este estará localizado na pasta docs do projeto pelo nome de KompJSlator.postman_collection.json
 ```
 
 ![Postman Backup](https://i.imgur.com/C4Nfpy2.gif)

@@ -1,4 +1,4 @@
-[![KNNJS](https://i.imgur.com/8Z64ch5.jpg)](http://bfy.tw/MoZ2)
+[![KompJSlator](https://i.imgur.com/8Z64ch5.jpg)](http://bfy.tw/MytG)
 
 # API KompJSlator
 
@@ -78,6 +78,12 @@ sudo apt-get update
 sudo apt-get install yarn
 ``` 
 
+> Instale o Postman
+
+```shell
+sudo apt-get install postman
+```
+
 > Inicie a API
 
 ```shell
@@ -85,12 +91,18 @@ Dentro da pasta raiz do projeto execute
 sudo yarn start
 ``` 
 
-
 > Importe o backup do postman
 
 ```shell
-Este estará localizado na pasta raiz do projeto pelo nome de KompJSlator.postman_collection.json
+Este estará localizado na pasta raiz do projeto pelo nome de AM KNN.postman_collection.json
 ```
+
+![Postman Backup](https://i.imgur.com/C4Nfpy2.gif)
+
+
+> Utilize a requisição Lexicon para a análise lexica de um código fonte Unbending
+
+![Lexicon](https://i.imgur.com/uud7gpm.gif)
 
 >Algum problema não relatado
 
@@ -99,8 +111,6 @@ sudo killall -9 node
 sudo yarn start
 ``` 
 ---
-
-<h2><a href="https://documenter.getpostman.com/view/6350371/S17tS8yr" target="_blank">Documentação</a></h2>
 
 ## Time
 

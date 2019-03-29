@@ -85,15 +85,16 @@ sudo apt-get install postman
 ```
 
 > Inicie a API
-
-```shell
+```
 Dentro da pasta raiz do projeto execute
+```
+```shell
 sudo yarn start
 ``` 
 
 > Importe o backup do postman
 
-```shell
+```
 Este estará localizado na pasta raiz do projeto pelo nome de AM KNN.postman_collection.json
 ```
 

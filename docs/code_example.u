@@ -38,9 +38,9 @@ MAIN{
 		} ELSE {
 			var2 = var2 + 0.75;
 		}
-	} WHILE (!thisisfbool) 
+	} WHILE (!thisisfbool)
 
-	READ rw_var;
+	READ rd_var;
 	WRITE rw_var;
 }
-// problema com o ! mexer na gramatica com o guiga e retorno duplicado
+// retorno duplicado

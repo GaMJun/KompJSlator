@@ -5,8 +5,40 @@ function emit_error(expected, tokens, code) {
     return JSON.parse(`{"ERROR_${code}": "${expected} expected, found ${tokens.type} in line ${tokens.line} column ${tokens.column}"}`)
 }
 
-function terminal(tokens, terminal) {
+function terminal(tokens, terminal, exits) {
     if (tokens[0].type == terminal) tokens.shift();
+    else {
+        let symbol = terminal
+        if(terminal === 'main') symbol = 'MAIN'
+        if(terminal === 'if') symbol = 'IF'
+        if(terminal === 'else') symbol = 'ELSE'
+        if(terminal === 'while') symbol = 'WHILE'
+        if(terminal === 'do') symbol = 'DO'
+        if(terminal === 'chave_esq') symbol = '\'{\''
+        else if (terminal === 'chave_dir') symbol = '\'}\'' 
+        else if (terminal === 'nome_var') symbol = 'variable' 
+        else if (terminal === 'sign_rel') symbol = 'relational signal' 
+        else if (terminal === 'sign_lo') symbol = 'logical signal' 
+        else if (terminal === 't_boolean') symbol = 'boolean value' 
+        else if (terminal === 'comma') symbol = '\',\'' 
+        else if (terminal === 'semicolon') symbol = '\';\'' 
+        else if (terminal === 'recebe') symbol = '\'=\'' 
+        else if (terminal === 't_integer') symbol = 'integer value' 
+        else if (terminal === 't_float') symbol = 'float value' 
+        else if (terminal === 'par_dir') symbol = '\'(\'' 
+        else if (terminal === '+') symbol = '\'+\'' 
+        else if (terminal === '-') symbol = '\'-\'' 
+        else if (terminal === '*') symbol = '\'*\'' 
+        else if (terminal === '/') symbol = '\'/\'' 
+        else if (terminal === 'integer') symbol = 'INT' 
+        else if (terminal === 'float') symbol = 'FLOAT' 
+        else if (terminal === 'boolean') symbol = 'BOOLEAN' 
+        else if (terminal === 'read') symbol = 'READ' 
+        else if (terminal === 'write') symbol = 'WRITE' 
+        return exits.compiler_error(
+            emit_error(`A ${symbol} was`, tokens[0], 24)
+        )
+    } 
 }
 
 function unbending(tokens, stack, exits) {
@@ -30,6 +62,7 @@ function bk(tokens, stack, exits) {
 function stmt(tokens, stack, exits) {
     switch (tokens[0].type) {
         case "nome_var": stack.push("stmt_line"); stack.push("nome_var"); break;
+        case "sign_lo": stack.push("stmt"); stack.push("sign_lo"); break;
         case "t_boolean": stack.push("stmt_line"); stack.push("valor"); break;
         case "t_integer": stack.push("stmt_line"); stack.push("valor"); break;
         case "t_float": stack.push("stmt_line"); stack.push("valor"); break;
@@ -408,33 +441,33 @@ module.exports = {
                 case "tipo": tipo(tokens, stack, exits); break;
                 case "cmd_read": cmd_read(tokens, stack, exits); break;
                 case "cmd_write": cmd_write(tokens, stack, exits); break;
-                case "main": terminal(tokens, "main"); break;
-                case "chave_esq": terminal(tokens, "chave_esq"); break;
-                case "chave_dir": terminal(tokens, "chave_dir"); break;
-                case "nome_var": terminal(tokens, "nome_var"); break;
-                case "sign_rel": terminal(tokens, "sign_rel"); break;
-                case "sign_lo": terminal(tokens, "sign_lo"); break;
-                case "comma": terminal(tokens, "comma"); break;
-                case "semicolon": terminal(tokens, "semicolon"); break;
-                case "recebe": terminal(tokens, "recebe"); break;
-                case "t_integer": terminal(tokens, "t_integer"); break;
-                case "t_float": terminal(tokens, "t_float"); break;
-                case "t_boolean": terminal(tokens, "t_boolean"); break;
+                case "main": terminal(tokens, "main", exits); break;
+                case "chave_esq": terminal(tokens, "chave_esq", exits); break;
+                case "chave_dir": terminal(tokens, "chave_dir", exits); break;
+                case "nome_var": terminal(tokens, "nome_var", exits); break;
+                case "sign_rel": terminal(tokens, "sign_rel", exits); break;
+                case "sign_lo": terminal(tokens, "sign_lo", exits); break;
+                case "comma": terminal(tokens, "comma", exits); break;
+                case "semicolon": terminal(tokens, "semicolon", exits); break;
+                case "recebe": terminal(tokens, "recebe", exits); break;
+                case "t_integer": terminal(tokens, "t_integer", exits); break;
+                case "t_float": terminal(tokens, "t_float", exits); break;
+                case "t_boolean": terminal(tokens, "t_boolean", exits); break;
                 case "if": terminal(tokens, "if"); break;
-                case "par_esq": terminal(tokens, "par_esq"); break;
-                case "par_dir": terminal(tokens, "par_dir"); break;
-                case "else": terminal(tokens, "else"); break;
-                case "while": terminal(tokens, "while"); break;
-                case "do": terminal(tokens, "do"); break;
-                case "+": terminal(tokens, "+"); break;
-                case "-": terminal(tokens, "-"); break;
-                case "*": terminal(tokens, "*"); break;
-                case "/": terminal(tokens, "/"); break;
-                case "integer": terminal(tokens, "integer"); break;
-                case "float": terminal(tokens, "float"); break;
-                case "boolean": terminal(tokens, "boolean"); break;
-                case "read": terminal(tokens, "read"); break;
-                case "write": terminal(tokens, "write"); break;
+                case "par_esq": terminal(tokens, "par_esq", exits); break;
+                case "par_dir": terminal(tokens, "par_dir", exits); break;
+                case "else": terminal(tokens, "else", exits); break;
+                case "while": terminal(tokens, "while", exits); break;
+                case "do": terminal(tokens, "do", exits); break;
+                case "+": terminal(tokens, "+", exits); break;
+                case "-": terminal(tokens, "-", exits); break;
+                case "*": terminal(tokens, "*", exits); break;
+                case "/": terminal(tokens, "/", exits); break;
+                case "integer": terminal(tokens, "integer", exits); break;
+                case "float": terminal(tokens, "float", exits); break;
+                case "boolean": terminal(tokens, "boolean", exits); break;
+                case "read": terminal(tokens, "read", exits); break;
+                case "write": terminal(tokens, "write", exits); break;
                 default: return exits.compiler_error(
                     emit_error('A valid TOKEN is', tokens[0], 24)
                 )

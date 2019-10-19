@@ -1,0 +1,46 @@
+MAIN{
+	INT var_int_10 = 10;
+	INT var_int_20 = 20;
+	FLOAT var_float_pi = 3.14152;
+	BOOLEAN var_bool_true = TRUE;
+	BOOLEAN var_bool_false = FALSE;
+	INT rw_var;
+	
+	IF(var > 10 && var < 20){
+		var_int_10 = 20 + 10;
+	}
+	IF(var > 10 || var == 20){
+		var = 20 * 10;
+	}
+	ELSE 
+	{
+		var = 20 / 10;
+	}
+	IF(var <= 10){
+		var = 20 - 10;
+	}
+	IF(var >= 10){
+	var = 20 - 10;
+	}
+
+	WHILE (thisistbool){
+		var2 = var2 + 0.5;
+
+		IF(var2 > 18){
+			thisistbool = FALSE;
+		}
+	}
+
+	DO{
+		var = var * 15;
+		IF (var2 > 20){
+			thisisfbool = TRUE;
+		} ELSE {
+			var2 = var2 + 0.75;
+		}
+	} WHILE (!thisisfbool) 
+
+	READ rw_var;
+	WRITE rw_var;
+}
+// problema com o ! mexer na gramatica com o guiga e retorno duplicado

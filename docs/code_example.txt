@@ -1,4 +1,5 @@
 MAIN{
+	FLOAT 99.9abcd;
 	INT var = 10;
 	INT inteiro = 10;
 	FLOAT var2 = 15.87;
@@ -6,8 +7,8 @@ MAIN{
 	BOOLEAN thisisfbool = FALSE;
 	INT rw_var;
  	FLOAT 1erro;
-	FLOAT 99.abcd;
-
+	
+@#$
 	IF(var == 10 && var == 20){
 		var = 20+10;
 	}

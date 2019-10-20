@@ -109,7 +109,7 @@ module.exports = {
 
         // Error
         lexer.rule(/.+?/, (ctx, match) => {
-            ctx.accept("LEXICAL_ERROR");
+            ctx.accept("LEXICAL_ERROR"); // -> unexpected error
         });
 
         let source_file = fs.readFileSync(inputs.file_path, "utf8");

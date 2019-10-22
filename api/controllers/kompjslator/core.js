@@ -52,11 +52,9 @@ module.exports = {
 
     fn: function (inputs, exits) {
         try {
-            sintaticon.do_sintaticon(lexicon.do_lexicon(inputs),exits)
-            return exits.loaded({
-                teste: "ok"
-            })
+            sintaticon.do_sintaticon(lexicon.do_lexicon(inputs), exits)
 
+            // tokens = lexicon.do_lexicon(inputs)
             // return exits.loaded({
             //     level: 'INFO',
             //     source_file: inputs.file_path,

@@ -9,36 +9,36 @@ function terminal(tokens, terminal, exits) {
     if (tokens[0].type == terminal) tokens.shift();
     else {
         let symbol = terminal
-        if(terminal === 'main') symbol = 'MAIN'
-        if(terminal === 'if') symbol = 'IF'
-        if(terminal === 'else') symbol = 'ELSE'
-        if(terminal === 'while') symbol = 'WHILE'
-        if(terminal === 'do') symbol = 'DO'
-        if(terminal === 'chave_esq') symbol = '\'{\''
-        else if (terminal === 'chave_dir') symbol = '\'}\'' 
-        else if (terminal === 'nome_var') symbol = 'variable' 
-        else if (terminal === 'sign_rel') symbol = 'relational signal' 
-        else if (terminal === 'sign_lo') symbol = 'logical signal' 
-        else if (terminal === 't_boolean') symbol = 'boolean value' 
-        else if (terminal === 'comma') symbol = '\',\'' 
-        else if (terminal === 'semicolon') symbol = '\';\'' 
-        else if (terminal === 'recebe') symbol = '\'=\'' 
-        else if (terminal === 't_integer') symbol = 'integer value' 
-        else if (terminal === 't_float') symbol = 'float value' 
-        else if (terminal === 'par_dir') symbol = '\'(\'' 
-        else if (terminal === '+') symbol = '\'+\'' 
-        else if (terminal === '-') symbol = '\'-\'' 
-        else if (terminal === '*') symbol = '\'*\'' 
-        else if (terminal === '/') symbol = '\'/\'' 
-        else if (terminal === 'integer') symbol = 'INT' 
-        else if (terminal === 'float') symbol = 'FLOAT' 
-        else if (terminal === 'boolean') symbol = 'BOOLEAN' 
-        else if (terminal === 'read') symbol = 'READ' 
-        else if (terminal === 'write') symbol = 'WRITE' 
+        if (terminal === 'main') symbol = 'MAIN'
+        if (terminal === 'if') symbol = 'IF'
+        if (terminal === 'else') symbol = 'ELSE'
+        if (terminal === 'while') symbol = 'WHILE'
+        if (terminal === 'do') symbol = 'DO'
+        if (terminal === 'chave_esq') symbol = '\'{\''
+        else if (terminal === 'chave_dir') symbol = '\'}\''
+        else if (terminal === 'nome_var') symbol = 'variable'
+        else if (terminal === 'sign_rel') symbol = 'relational signal'
+        else if (terminal === 'sign_lo') symbol = 'logical signal'
+        else if (terminal === 't_boolean') symbol = 'boolean value'
+        else if (terminal === 'comma') symbol = '\',\''
+        else if (terminal === 'semicolon') symbol = '\';\''
+        else if (terminal === 'recebe') symbol = '\'=\''
+        else if (terminal === 't_integer') symbol = 'integer value'
+        else if (terminal === 't_float') symbol = 'float value'
+        else if (terminal === 'par_dir') symbol = '\'(\''
+        else if (terminal === '+') symbol = '\'+\''
+        else if (terminal === '-') symbol = '\'-\''
+        else if (terminal === '*') symbol = '\'*\''
+        else if (terminal === '/') symbol = '\'/\''
+        else if (terminal === 'integer') symbol = 'INT'
+        else if (terminal === 'float') symbol = 'FLOAT'
+        else if (terminal === 'boolean') symbol = 'BOOLEAN'
+        else if (terminal === 'read') symbol = 'READ'
+        else if (terminal === 'write') symbol = 'WRITE'
         return exits.compiler_error(
             emit_error(`A ${symbol} was`, tokens[0], 24)
         )
-    } 
+    }
 }
 
 function unbending(tokens, stack, exits) {
@@ -146,22 +146,11 @@ function C(tokens, stack, exits) {
 
 function AUX(tokens, stack, exits) {
     switch (tokens[0].type) {
-        case "chave_dir": stack.push("stmt_line"); break;
-        case "nome_var": stack.push("stmt_line"); break;
-        case "sign_rel": stack.push("stmt_line"); break;
-        case "sign_lo": stack.push("stmt_line"); break;
-        case "t_boolean": stack.push("stmt_line"); break;
+        case "sign_rel": stack.push("stmt_DUASLINHAS"); break;
+        case "sign_lo": stack.push("stmt_DUASLINHAS"); break;
         case "recebe": stack.push("recebe_line"); break;
-        case "if": stack.push("stmt_line"); break;
-        case "while": stack.push("stmt_line"); break;
-        case "do": stack.push("stmt_line"); break;
-        case "integer": stack.push("stmt_line"); break;
-        case "float": stack.push("stmt_line"); break;
-        case "boolean": stack.push("stmt_line"); break;
-        case "read": stack.push("stmt_line"); break;
-        case "write": stack.push("stmt_line"); break;
         default: return exits.compiler_error(
-            emit_error('logical or arithmetic expression or attribution to a variable', tokens[0], 9)
+            emit_error('logical or relational symbol or attribution to a variable', tokens[0], 9)
         )
     }
 }
@@ -189,7 +178,6 @@ function DUMMIE(tokens, stack, exits) {
         case "boolean": stack.push("expr"); break;
         case "read": stack.push("expr"); break;
         case "write": stack.push("expr"); break;
-        // case "recebe": stack.push("expr"); break;
         default: return exits.compiler_error(
             emit_error('boolean value or variable or variable declaration or conditional structure or repeating structure or read or write command', tokens[0], 5)
         )
@@ -405,6 +393,18 @@ function cmd_write(tokens, stack, exits) {
     }
 }
 
+
+function stmt_DUASLINHAS(tokens, stack, exits) {
+    switch (tokens[0].type) {
+        case "sign_rel": stack.push("stmt"); stack.push("sign_rel"); break;
+        case "sign_lo": stack.push("stmt"); stack.push("sign_lo"); break;
+        default: return exits.compiler_error(
+            emit_error('logical or relational symbol', tokens[0], 4)
+        )
+    }
+}
+
+
 module.exports = {
     do_sintaticon: function (tokens, exits) {
         error = false;
@@ -416,6 +416,7 @@ module.exports = {
                 case "bk": bk(tokens, stack, exits); break;
                 case "stmt": stmt(tokens, stack, exits); break;
                 case "stmt_line": stmt_line(tokens, stack, exits); break;
+                case "stmt_DUASLINHAS": stmt_DUASLINHAS(tokens, stack, exits); break;
                 case "expr": expr(tokens, stack, exits); break;
                 case "A": A(tokens, stack, exits); break;
                 case "B": B(tokens, stack, exits); break;
@@ -472,6 +473,11 @@ module.exports = {
                     emit_error('A valid TOKEN is', tokens[0], 24)
                 )
             }
+        }
+        if (!error) {
+            return exits.loaded({
+                message: "Parsed Successfully!"
+            })
         }
     }
 }

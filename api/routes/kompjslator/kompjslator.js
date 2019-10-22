@@ -20,7 +20,7 @@ module.exports = async function (app) {
     const asAction = require('machine-as-action'); //machine to build the functions
 
     app.route('/kompjslator')
-        .post(upload.single('file'), (req, res, next) => {
+        .post(upload.single('source_code'), (req, res, next) => {
             req.params.app = app;
             req.params.file_path = req.file.path;
 

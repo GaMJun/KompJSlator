@@ -1,0 +1,47 @@
+MAIN{
+	FLOAT 99.9abcd;
+	INT var = 10;
+	INT inteiro = 10;
+	FLOAT var2 = 15.87;
+	BOOLEAN thisistbool = TRUE;
+	BOOLEAN thisisfbool = FALSE;
+	INT rw_var;
+ 	FLOAT 1erro;
+	
+@#$
+	IF(var == 10 && var == 20){
+		var = 20+10;
+	}
+	IF(var > 10 || var == 20){
+		var = 20*10;
+	}
+	IF(!var < 10){
+		var = 20/10;
+	}
+	IF(var <= 10){
+		var = 20-10;
+	}
+	IF(var >= 10){
+	var = 20-10;
+	}
+
+	WHILE (thisistbool){
+		var2 = var2 + 0.5;
+
+		IF(var2 > 18){
+			thisistbool = FALSE;
+		}
+	}
+
+	DO{
+		var = var * 15;
+		if (var2 > 20){
+			thisisfbool = TRUE;
+		} ELSE {
+			var2 = var2 + 0.75;
+		}
+	} WHILE (!thisisfbool) 
+
+	READ rw_var;
+	WRITE rw_var;
+}

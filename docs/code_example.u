@@ -12,11 +12,10 @@ MAIN{
 	IF(var > 10 || var == 20){
 		var = 20 * 10;
 	}
-	ELSE 
-	{
+	ELSE{
 		var = 20 / 10;
 	}
-	IF(var <= 10){
+	IF(var <= 10 && var <= 10 && var <= 10 && var <= 10){
 		var = 20 - 10;
 	}
 	IF(var >= 10){
@@ -36,11 +35,11 @@ MAIN{
 		IF (var2 > 20){
 			thisisfbool = TRUE;
 		} ELSE {
-			var2 = var2 + 0.75;
+			var2 = var2 + 0.75 + 10 * 2 ;
 		}
 	} WHILE (!thisisfbool)
 
 	READ rd_var;
 	WRITE rw_var;
 }
-// retorno duplicado
+

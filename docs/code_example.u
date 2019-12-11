@@ -1,45 +1,56 @@
 MAIN{
-	INT var_int_10 = 10;
+	INT var_int_10 = 102;
 	INT var_int_20 = 20;
 	FLOAT var_float_pi = 3.14152;
 	BOOLEAN var_bool_true = TRUE;
 	BOOLEAN var_bool_false = FALSE;
-	INT rw_var;
+	BOOLEAN thisistbool = TRUE;
+	BOOLEAN thisisfbool = FALSE;
+	FLOAT var = 13.6;
+	INT rw_var, teste, muito, teste2 = 10, rd_var;
 	
-	IF(var > 10 && var < 20){
+	IF(var_bool_true && var_bool_false){
 		var_int_10 = 20 + 10;
 	}
-	IF(var > 10 || var == 20){
-		var = 20 * 10;
+	IF(var_bool_true || var_bool_false){
+		var_int_10 = 20 + 10;
+	}
+	IF(!var_bool_false == FALSE ){
+		var_int_10 = 20 + 10;
+	}
+	IF(var > 10.0){
+		var = 20.4 * 10.7;
 	}
 	ELSE{
-		var = 20 / 10;
+		var = 20.5 / 10.0;
 	}
-	IF(var <= 10 && var <= 10 && var <= 10 && var <= 10){
-		var = 20 - 10;
+	IF(var <= 10.7){
+		var = 20.4 - 10.8;
 	}
-	IF(var >= 10){
-	var = 20 - 10;
+	
+	IF(var_int_10 >= 10){
+	var_int_10 = 20 - 10;
 	}
+
+	INT var2 = 13;
 
 	WHILE (thisistbool){
-		var2 = var2 + 0.5;
-
+		var2 = var2 + 1;
+		var2 = 1 + var2;
 		IF(var2 > 18){
 			thisistbool = FALSE;
 		}
 	}
 
 	DO{
-		var = var * 15;
+		var = var * 15.0;
 		IF (var2 > 20){
 			thisisfbool = TRUE;
 		} ELSE {
-			var2 = var2 + 0.75 + 10 * 2 ;
+			var2 = var2 + 75 + 10 * 2 ;
 		}
 	} WHILE (!thisisfbool)
 
 	READ rd_var;
 	WRITE rw_var;
 }
-

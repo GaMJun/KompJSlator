@@ -2,6 +2,7 @@ const fs = require("fs");
 const Tokenizr = require("tokenizr");
 const lexicon = require("./lexicon");
 const sintaticon = require("./sintaticon");
+const semanticon = require("./semanticon");
 
 module.exports = {
     friendlyName: 'KOMPjsLator',
@@ -52,38 +53,10 @@ module.exports = {
 
     fn: function (inputs, exits) {
         try {
-            sintaticon.do_sintaticon(lexicon.do_lexicon(inputs), exits)
-
-            // tokens = lexicon.do_lexicon(inputs)
-            // return exits.loaded({
-            //     level: 'INFO',
-            //     source_file: inputs.file_path,
-            //     num_tokens: tokens.length,
-            //     tokens: tokens.map(token => {
-            //         if (token.type !== "<ERROR>") {
-            //             return ({
-            //                 "type": token.type,
-            //                 "value": token.value,
-            //                 "text": token.text,
-            //                 "pos": token.pos,
-            //                 "line": token.line,
-            //                 "column": token.column
-            //             });
-            //         }
-            //     }),
-            //     ERROR: tokens.map(token => {
-            //         if (token.type === "<ERROR>") {
-            //             return ({
-            //                 "type": token.type,
-            //                 "value": token.value,
-            //                 "text": token.text,
-            //                 "pos": token.pos,
-            //                 "line": token.line,
-            //                 "column": token.column
-            //             });
-            //         }
-            //     })
-            // });
+            tokens = lexicon.do_lexicon(inputs)
+            if (sintaticon.do_sintaticon([...tokens], exits)) {
+                semanticon.do_semanticon([...tokens], exits)
+            }
         } catch
         (err) {
             return exits.internalError({

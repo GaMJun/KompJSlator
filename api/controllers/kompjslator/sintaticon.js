@@ -475,9 +475,7 @@ module.exports = {
             }
         }
         if (!error) {
-            return exits.loaded({
-                message: "Parsed Successfully!"
-            })
+            return true
         }
     }
 }
